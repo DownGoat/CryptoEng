@@ -1,0 +1,77 @@
+Excersice 3.1:
+    How much space would be required to store a table for an entire idealized 
+    block cipher that operates on 64-bit blocks and that has 80-bit keys?
+
+    The table will has 2^80 elements because the key size is 80 bits, each with 
+    a size of 2^64 bits, each element is 64-bits because of the 64-bit block 
+    size.
+    
+    This is 1.511 * 10^11 TiB.
+
+
+Exersice 3.2:
+    1. How many rounds are in DES?
+    2. How many bits are in a DES key?
+    3. What is the DES block size?
+    4. How does 3DES work as a function of DES?
+
+    1. There are 16 rounds in DES, each round uses a seperate 48-bit key which
+    is called the round key. Each round key is formed by selecting 48-bits from
+    the 56-bit key. The algorithm that is used to derive the round keys is 
+    called the key scheduler.
+
+    2. It uses a 56-bit key.
+
+    3. The block size of DES is 64 bits, this makes it unsuitable for modern use.
+
+    4. 3DES is three DES encryptions in sequence, It uses two or three different
+    56-bit DES keys, first you encrypt with key 1, then you decrypt the
+    ciphertext with key 2, and then you either encrypt the ciphertext with a 
+    third key, or the first key again. This solves the problem with the limited
+    key size of DES, but it does not solve the problem with the 64-bit block
+    size.
+
+
+Exercise 3.3:
+    1. What are the possible lengths for AES keys?
+    2. For each key length, how many rounds are in AES?
+    3. What is the AES block size?
+
+    1. AES is defined for 128-, 192-, and 256-bit keys.
+    
+    2. It uses 10-14 rounds depending on the keys, 10 rounds for 128-bit, 12 for
+    192-bit, and 14 rounds for 256-bit. Like in DES there is a key scheduler
+    that generates the keys for each round.
+
+    3. Even tho AES supports different key sizes the block size is always 
+    128-bit.
+
+
+Exercise 3.4:
+    1. Under what situations might you choose 3DES over AES?
+    2. Under what situations might you choose AES over 3DES?
+
+    1. Only when the system created talks with another system that requiers 3DES
+    for compability, if the system is created from grounds up there is not any
+    good reasons to choose 3DES over AES.
+
+    2. AES would be choosen in any system that would be implemented today, and
+    does not requiere to talk to another older system that only works with 3DES.
+
+
+Exercise 3.5:
+    1. Suppose you have a processor that can perform a single DES encryption or 
+    decryption operation in 2^−26 seconds. Suppose you also have a large number
+    of plaintext-ciphertext pairs for DES under a single, unknown key. How many
+    hours would it take, on average, to find that DES key, using an exhaustive 
+    search approach and a single processor?
+    
+    2. How many hours would it take, on average, to find that DES key, using an 
+    exhaustive search approach and a collection of 2^14 processors?
+
+    1. The DES keys are 56-bit, so there is 2^56 possible keys, you can do 2^26
+    DES operations each second, so it will take 2^56/2^26 seconds to find the
+    key. This turns out to be 34 years to find the key. 
+
+    2. With 2^14 processors the search will be 2^56/(2^26*2^14) seconds, which
+    is a little more than 18 hours.
